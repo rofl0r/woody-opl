@@ -30,8 +30,8 @@
 /*
 	define Bits, Bitu, Bit32s, Bit32u, Bit16s, Bit16u, Bit8s, Bit8u here
 */
-/*
 #include <stdint.h>
+#include <stdbool.h>
 typedef uintptr_t	Bitu;
 typedef intptr_t	Bits;
 typedef uint32_t	Bit32u;
@@ -40,14 +40,12 @@ typedef uint16_t	Bit16u;
 typedef int16_t		Bit16s;
 typedef uint8_t		Bit8u;
 typedef int8_t		Bit8s;
-*/
 
 
 /*
 	define attribution that inlines/forces inlining of a function (optional)
 */
-#define OPL_INLINE INLINE
-
+#define OPL_INLINE inline
 
 #undef NUM_CHANNELS
 #if defined(OPLTYPE_IS_OPL3)
