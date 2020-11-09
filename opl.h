@@ -1,3 +1,5 @@
+#ifndef WOODY_OPL_H
+#define WOODY_OPL_H
 /*
  *  Copyright (C) 2002-2020  The DOSBox Team
  *  OPL2/OPL3 emulation library
@@ -197,3 +199,5 @@ Bitu adlib_reg_read(Bitu port);
 void adlib_write_index(Bitu port, Bit8u val);
 
 static Bit32u generator_add;	// should be a chip parameter
+
+#endif
