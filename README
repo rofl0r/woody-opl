@@ -1,0 +1,51 @@
+"Woody" OPL3 emulator
+=====================
+
+this is the so-called woody opl3 emulator, ripped from DOSBOX svn rev 4391
+(November 2020), with full commit history and some tiny touch-ups to make
+it compile as C instead of C++.
+
+many adlib/OPL-playing programs use some version of this emulator, but with
+C++ and CMake crap added to it, because windows users have been brainwashed
+into believing C is inferior to C++, particulary because MSVC++ doesn't even
+properly support C. what they don't know is that C compiles a lot faster,
+is much simpler and has much more widespread toolchain support.
+apart from that it has a stable ABI, and allows to produce much slimmer
+executables because libstdc++ (the C++ standard library) doesn't need to
+be linked against the executable.
+
+Usage:
+======
+
+drop files into your project, include opl.h, and use in your code:
+
+    // initialize the chip(s). samplerate is typicallly 44100.
+    adlib_init(samplerate);
+
+    // write a value into a register.
+    adlib_write(reg, val);
+
+    // get a sample from the chip.
+    int16_t sample;
+    adlib_getsample(&sample, 1);
+
+then compile it and link opl.c to your code.
+that's pretty much all there is to it.
+
+check https://github.com/digital-sound-antiques/emu2413/blob/master/sample2413.c
+for a good example of what and how to feed into the chip, and when to read
+samples (and how many) from it.
+although the example uses a different chip emulator, the strategy is identical.
+
+
+License
+=======
+unfortunately, the code is licensed as LGPL 2.1.
+
+TODO
+====
+currently the code is not library-safe, as it uses global variables.
+optimally all global state is put into a "context" struct and a pointer to
+the struct passed to all functions that need access to those variables.
+also it would be nice to poke the original authors whether they could relicense
+the code as MIT.
