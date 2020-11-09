@@ -176,7 +176,7 @@ Bit32u tremtab_add;
 
 
 // enable an operator
-void enable_operator(Bitu regbase, op_type* op_pt);
+void enable_operator(Bitu regbase, op_type* op_pt, Bit32u act_type);
 
 // functions to change parameters of an operator
 void change_frequency(Bitu chanbase, Bitu regbase, op_type* op_pt);
